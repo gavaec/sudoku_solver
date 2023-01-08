@@ -13,38 +13,38 @@ def possible_for_number(k_, i_def, j_def):
 sudoku_normal = []
 for i in range(0, 9):
     sudoku_normal.append([0, 0, 0, 0, 0, 0, 0, 0, 0])
-sudoku_normal[0][5] = 5
-sudoku_normal[0][7] = 9
-sudoku_normal[1][2] = 9
-sudoku_normal[1][3] = 2
-sudoku_normal[1][4] = 3
-sudoku_normal[1][7] = 7
-sudoku_normal[2][1] = 8
-sudoku_normal[2][2] = 2
-sudoku_normal[2][3] = 9
-sudoku_normal[2][6] = 1
-sudoku_normal[3][1] = 9
-sudoku_normal[3][2] = 1
-sudoku_normal[3][7] = 8
-sudoku_normal[3][8] = 6
-sudoku_normal[5][0] = 8
-sudoku_normal[5][1] = 7
-sudoku_normal[5][6] = 9
-sudoku_normal[5][7] = 3
-sudoku_normal[6][2] = 5
-sudoku_normal[6][5] = 6
-sudoku_normal[6][6] = 7
-sudoku_normal[6][7] = 1
-sudoku_normal[7][1] = 6
-sudoku_normal[7][4] = 7
-sudoku_normal[7][5] = 9
-sudoku_normal[7][6] = 8
-sudoku_normal[8][1] = 1
-sudoku_normal[8][3] = 5
+sudoku_normal[0][1] = 9
+sudoku_normal[0][2] = 3
+sudoku_normal[0][5] = 6
+sudoku_normal[0][7] = 4
+sudoku_normal[1][0] = 7
+sudoku_normal[1][6] = 8
+sudoku_normal[1][7] = 9
+sudoku_normal[2][5] = 7
+sudoku_normal[2][8] = 3
+sudoku_normal[3][1] = 2
+sudoku_normal[3][2] = 8
+sudoku_normal[3][5] = 5
+sudoku_normal[3][6] = 7
+sudoku_normal[4][3] = 7
+sudoku_normal[4][5] = 9
+sudoku_normal[5][2] = 7
+sudoku_normal[5][3] = 2
+sudoku_normal[5][6] = 3
+sudoku_normal[5][7] = 5
+sudoku_normal[6][0] = 8
+sudoku_normal[6][3] = 3
+sudoku_normal[7][1] = 4
+sudoku_normal[7][2] = 6
+sudoku_normal[7][8] = 8
+sudoku_normal[8][1] = 5
+sudoku_normal[8][3] = 6
+sudoku_normal[8][6] = 2
+sudoku_normal[8][7] = 3
 
-for i in sudoku_normal:
-    print(i)
-print(' ')
+sudoku_normal[5][1] = 6
+sudoku_normal[1][1] = 1
+sudoku_normal[6][8] = 5
 
 sudoku_transpose = []
 for j in range(0, 9):
@@ -61,8 +61,8 @@ for i in range(0, 3):
             for j_ in range(j * 3, j * 3 + 3):
                 tmp.append(sudoku_normal[i_][j_])
         sudoku_square.append(tmp)
-success_k = 1
-while success_k > 0:
+repeat_loop = 0
+while repeat_loop < 2:
     success_k = 0
     for k in range(1, 10):
         for i in range(0, 9):
@@ -98,6 +98,7 @@ while success_k > 0:
                     sudoku_transpose[j_possible][i_possible] = k
                     sudoku_square[i_sqr].append(k)
                     success_k += 1
-    print(success_k)
+    if success_k == 0:
+        repeat_loop += 1
 for i in sudoku_normal:
     print(i)
